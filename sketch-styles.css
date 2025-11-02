@@ -1,0 +1,738 @@
+/* Hand-drawn Sketch Style for Architecture Log */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Patrick+Hand&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Hand-drawn color palette */
+    --sketch-bg: #FAF8F4;        /* Warm paper-like neutral */
+    --sketch-line: #3B3B3B;     /* Pencil gray */
+    --sketch-marker: #F6E27F;   /* Yellow highlighter */
+    --sketch-accent: #A0A0A0;   /* Secondary annotations */
+    --sketch-button: #EDEAE4;   /* Light gray filled */
+    
+    /* Handwritten fonts */
+    --font-hand: 'Patrick Hand', 'Caveat', 'Comic Sans MS', cursive;
+}
+
+body {
+    font-family: var(--font-hand);
+    background: var(--sketch-bg);
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(0,0,0,.02) 98px, rgba(0,0,0,.02) 99px),
+        repeating-linear-gradient(0deg, transparent, transparent 98px, rgba(0,0,0,.02) 98px, rgba(0,0,0,.02) 99px);
+    color: var(--sketch-line);
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* Hand-drawn texture animation */
+@keyframes subtleSketch {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.98;
+    }
+    25% { 
+        transform: translate(0.5px, 0.3px) rotate(0.1deg);
+        opacity: 0.97;
+    }
+    50% { 
+        transform: translate(-0.3px, 0.5px) rotate(-0.1deg);
+        opacity: 0.96;
+    }
+    75% { 
+        transform: translate(0.3px, -0.3px) rotate(0.1deg);
+        opacity: 0.97;
+    }
+}
+
+/* Hand-drawn border utility */
+.sketch-border {
+    border: 3px solid var(--sketch-line);
+    border-radius: 8px;
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.05),
+        inset 0 0 0 1px rgba(255,255,255,0.1);
+    position: relative;
+}
+
+/* Hand-written text styles */
+.hand-title {
+    font-family: var(--font-hand);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--sketch-line);
+    margin-bottom: 12px;
+}
+
+.hand-subtitle {
+    font-family: var(--font-hand);
+    font-size: 16px;
+    color: var(--sketch-accent);
+}
+
+.hand-text {
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-line);
+}
+
+/* Navbar - Hand drawn */
+.navbar {
+    background: var(--sketch-button);
+    border-bottom: 4px solid var(--sketch-line);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    animation: subtleSketch 20s infinite;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand h1 {
+    font-family: var(--font-hand);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--sketch-line);
+    transform: rotate(-1deg);
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-tab {
+    background: var(--sketch-bg);
+    border: 3px solid var(--sketch-line);
+    padding: 8px 18px;
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-line);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    transform: rotate(-0.5deg);
+}
+
+.nav-tab:hover {
+    background: var(--sketch-marker);
+    transform: rotate(0deg);
+}
+
+.nav-tab.active {
+    background: var(--sketch-marker);
+    transform: rotate(0deg);
+    font-weight: 600;
+}
+
+.nav-user {
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-line);
+}
+
+/* Modal - Hand drawn */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background: var(--sketch-bg);
+    border: 4px solid var(--sketch-line);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transform: rotate(-0.5deg);
+    position: relative;
+}
+
+.login-modal h2 {
+    font-family: var(--font-hand);
+    font-size: 36px;
+    color: var(--sketch-line);
+    margin-bottom: 12px;
+    transform: rotate(1deg);
+}
+
+.modal-subtitle {
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-accent);
+    margin-bottom: 28px;
+    transform: rotate(-0.5deg);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--sketch-line);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid var(--sketch-line);
+    background: var(--sketch-button);
+    transform: rotate(15deg);
+}
+
+.modal-close:hover {
+    transform: rotate(0deg);
+    background: var(--sketch-marker);
+}
+
+/* Input - Hand drawn */
+.input-group label,
+.form-group label {
+    display: block;
+    font-family: var(--font-hand);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--sketch-line);
+    transform: rotate(-0.3deg);
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select,
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 3px solid var(--sketch-line);
+    border-radius: 8px;
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-line);
+    background: var(--sketch-bg);
+    transform: rotate(0.3deg);
+    transition: all 0.2s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--sketch-marker);
+    background: var(--sketch-marker);
+    transform: rotate(0deg);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: var(--sketch-marker);
+    color: var(--sketch-line);
+    padding: 14px 28px;
+    border: 4px solid var(--sketch-line);
+    border-radius: 12px;
+    font-family: var(--font-hand);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    transform: rotate(-1deg);
+}
+
+.btn-primary:hover {
+    background: var(--sketch-button);
+    transform: rotate(1deg);
+}
+
+.btn-icon {
+    background: none;
+    border: 3px solid var(--sketch-line);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--sketch-line);
+    transition: all 0.2s;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-2deg);
+}
+
+.btn-icon:hover {
+    transform: rotate(5deg) scale(1.1);
+    background: var(--sketch-marker);
+}
+
+.btn-icon.liked {
+    color: #E74C3C;
+    background: var(--sketch-marker);
+    transform: rotate(0deg);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* Post Card - Hand drawn sketch */
+.post-card {
+    background: var(--sketch-bg);
+    border: 4px solid var(--sketch-line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    transform: rotate(-0.3deg);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.08);
+    animation: subtleSketch 25s infinite;
+}
+
+.post-card:nth-child(even) {
+    transform: rotate(0.3deg);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 3px dashed var(--sketch-line);
+    background: var(--sketch-button);
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.post-author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--sketch-marker);
+    border: 3px solid var(--sketch-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    transform: rotate(5deg);
+}
+
+.post-author-name {
+    font-family: var(--font-hand);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--sketch-line);
+}
+
+.post-date {
+    font-family: var(--font-hand);
+    font-size: 16px;
+    color: var(--sketch-accent);
+}
+
+.post-image,
+.post-image-placeholder {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background: var(--sketch-button);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    border-bottom: 3px dashed var(--sketch-line);
+}
+
+.post-content {
+    padding: 24px;
+}
+
+.post-category {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: var(--font-hand);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    border: 2px solid var(--sketch-line);
+    transform: rotate(-1deg);
+}
+
+.category-religious { background: #E8D5C4; }
+.category-residential { background: #D4E8DC; }
+.category-public { background: #D8E3F2; }
+.category-commercial { background: #F5E6D3; }
+.category-cultural { background: #F2D8E8; }
+.category-other { background: #E8E8E8; }
+
+.post-building-name {
+    font-family: var(--font-hand);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--sketch-line);
+    transform: rotate(-0.5deg);
+}
+
+.post-location {
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-accent);
+    margin-bottom: 16px;
+}
+
+.post-note {
+    font-family: var(--font-hand);
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: var(--sketch-line);
+    white-space: pre-wrap;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.post-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--sketch-button);
+    border: 2px dashed var(--sketch-line);
+    border-radius: 20px;
+    font-family: var(--font-hand);
+    font-size: 16px;
+    color: var(--sketch-line);
+    transform: rotate(-1deg);
+}
+
+.post-tag:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    border-top: 3px dashed var(--sketch-line);
+    background: var(--sketch-button);
+}
+
+.post-stats {
+    display: flex;
+    gap: 20px;
+    font-family: var(--font-hand);
+    font-size: 18px;
+    color: var(--sketch-accent);
+}
+
+.post-comments-section {
+    padding: 20px 24px;
+    border-top: 2px dashed var(--sketch-line);
+}
+
+.comment-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 3px solid var(--sketch-line);
+    border-radius: 20px;
+    font-family: var(--font-hand);
+    font-size: 16px;
+    background: var(--sketch-bg);
+    transform: rotate(0.3deg);
+}
+
+.comment-submit {
+    padding: 10px 20px;
+    background: var(--sketch-marker);
+    color: var(--sketch-line);
+    border: 3px solid var(--sketch-line);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-hand);
+    font-size: 16px;
+    font-weight: 600;
+    transform: rotate(-1deg);
+}
+
+.comment-submit:hover {
+    transform: rotate(0deg);
+}
+
+.comments-list {
+    margin-top: 16px;
+}
+
+.comment-item {
+    padding: 12px 0;
+    font-family: var(--font-hand);
+    font-size: 16px;
+    border-left: 4px solid var(--sketch-marker);
+    padding-left: 12px;
+    margin-bottom: 12px;
+    background: var(--sketch-button);
+    border-radius: 8px;
+    padding: 12px;
+    transform: rotate(-0.2deg);
+}
+
+.comment-author {
+    font-weight: 600;
+    color: var(--sketch-line);
+    margin-right: 8px;
+}
+
+.comment-text {
+    color: var(--sketch-line);
+}
+
+/* Feed filters */
+.feed-filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.filter-select,
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 3px solid var(--sketch-line);
+    border-radius: 12px;
+    font-family: var(--font-hand);
+    font-size: 18px;
+    background: var(--sketch-bg);
+    transform: rotate(-0.5deg);
+}
+
+/* Explore Grid */
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.explore-card {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid var(--sketch-line);
+    background: var(--sketch-button);
+    transform: rotate(-1deg);
+}
+
+.explore-card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.explore-card:hover {
+    transform: rotate(0deg) scale(1.05);
+    border-color: var(--sketch-marker);
+}
+
+.explore-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.explore-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--sketch-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+/* Profile */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 4px dashed var(--sketch-line);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--sketch-marker);
+    border: 4px solid var(--sketch-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    transform: rotate(5deg);
+}
+
+.profile-info h2 {
+    font-family: var(--font-hand);
+    font-size: 32px;
+    margin-bottom: 12px;
+    transform: rotate(-0.5deg);
+}
+
+.profile-info p {
+    font-family: var(--font-hand);
+    color: var(--sketch-accent);
+    font-size: 18px;
+}
+
+.user-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+/* Upload */
+.upload-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.upload-container h2 {
+    font-family: var(--font-hand);
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    transform: rotate(-0.5deg);
+}
+
+.photo-preview {
+    margin-top: 16px;
+}
+
+.photo-preview img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 12px;
+    border: 4px solid var(--sketch-line);
+}
+
+/* Hand-drawn decorations */
+.doodle-arrow {
+    position: relative;
+    display: inline-block;
+}
+
+.doodle-arrow::after {
+    content: '→';
+    color: var(--sketch-accent);
+    font-size: 24px;
+    margin-left: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nav-tab {
+        font-size: 16px;
+        padding: 6px 14px;
+    }
+
+    .nav-brand h1 {
+        font-size: 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .explore-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .post-image,
+    .post-image-placeholder {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 24px 12px;
+    }
+
+    .post-card {
+        margin-bottom: 24px;
+    }
+
+    .post-building-name {
+        font-size: 24px;
+    }
+
+    .user-posts {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Architecture Log v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Modal (shown on first visit) -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-container login-modal">
+            <h2>Architecture Log에 오신 것을 환영합니다</h2>
+            <p class="modal-subtitle">시작하기 위해 이름을 입력해주세요</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="usernameInput">이름</label>
+                    <input type="text" id="usernameInput" placeholder="홍길동" required>
+                </div>
+                <div class="input-group">
+                    <label for="bioInput">한 줄 소개 (선택)</label>
+                    <input type="text" id="bioInput" placeholder="건축 여행자를 기록합니다">
+                </div>
+                <button type="submit" class="btn-primary">시작하기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App (hidden initially) -->
+    <div id="app" class="hidden">
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1>🏛️ Architecture Log</h1>
+                </div>
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="feed">Feed</button>
+                    <button class="nav-tab" data-tab="explore">Explore</button>
+                    <button class="nav-tab" data-tab="profile">My Page</button>
+                    <button class="nav-tab" data-tab="upload">Upload</button>
+                </div>
+                <div class="nav-user">
+                    <span id="currentUsername">User</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="main-content">
+            <!-- Feed Tab -->
+            <div class="tab-content active" id="feed-tab">
+                <div class="feed-container">
+                    <!-- Feed filters -->
+                    <div class="feed-filters">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="종교건축">Religious</option>
+                            <option value="주거건축">Residential</option>
+                            <option value="공공건축">Public</option>
+                            <option value="상업건축">Commercial</option>
+                            <option value="문화건축">Cultural</option>
+                            <option value="기타">Other</option>
+                        </select>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search by tag or building...">
+                    </div>
+
+                    <!-- Feed Posts -->
+                    <div id="feedPosts" class="posts-container">
+                        <!-- Posts will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore Tab -->
+            <div class="tab-content" id="explore-tab">
+                <div class="explore-container">
+                    <h2>Explore All Posts</h2>
+                    <div id="exploreGrid" class="explore-grid">
+                        <!-- Grid will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="tab-content" id="profile-tab">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-info">
+                            <h2 id="profileUsername">Username</h2>
+                            <p id="profileBio">Bio</p>
+                        </div>
+                    </div>
+                    <div id="userPosts" class="user-posts">
+                        <!-- User's posts will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Tab -->
+            <div class="tab-content" id="upload-tab">
+                <div class="upload-container">
+                    <h2>새 답사 기록 추가</h2>
+                    <form id="uploadForm" class="upload-form">
+                        <div class="form-group">
+                            <label for="buildingNameInput">건물명 *</label>
+                            <input type="text" id="buildingNameInput" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoryInput">카테고리</label>
+                            <select id="categoryInput">
+                                <option value="종교건축">종교건축</option>
+                                <option value="주거건축">주거건축</option>
+                                <option value="공공건축">공공건축</option>
+                                <option value="상업건축">상업건축</option>
+                                <option value="문화건축">문화건축</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="locationInput">위치</label>
+                                <input type="text" id="locationInput" placeholder="서울시 종로구">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateInput">날짜</label>
+                                <input type="date" id="dateInput" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photoInput">사진</label>
+                            <div id="uploadDropZone" class="upload-drop-zone">
+                                <div class="upload-placeholder">
+                                    <div class="upload-icon">📸</div>
+                                    <div class="upload-text">
+                                        <strong>사진을 여기에 드롭하세요 (여러 장 가능)</strong>
+                                        <span>또는</span>
+                                        <button type="button" class="upload-button" onclick="document.getElementById('photoInput').click()">파일 선택</button>
+                                    </div>
+                                    <div class="upload-hint">
+                                        여러 장의 이미지를 드롭하거나 선택할 수 있습니다.<br>
+                                        이미지를 복사(Ctrl+C) 후 붙여넣기(Ctrl+V)도 가능합니다
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="file" id="photoInput" accept="image/*" multiple style="display: none;">
+                            <div id="photoPreview" class="photo-preview"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="noteInput">메모</label>
+                            <textarea id="noteInput" rows="5" placeholder="이 건물에 대한 감상과 생각을 기록하세요..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tagsInput">태그</label>
+                            <input type="text" id="tagsInput" placeholder="빛, 재료, 공간 (쉼표로 구분)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emotionColorInput">감정 색상 (선택)</label>
+                            <input type="color" id="emotionColorInput" value="#F5E6D3">
+                        </div>
+
+                        <button type="submit" class="btn-primary">게시하기</button>
+                    </form>
+                    <div class="form-group" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                        <button type="button" id="clearImagesBtn" class="btn-primary" style="background: #e74c3c;">🧹 Clear Cached Images</button>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px;">
+                            This will delete all image files from browser storage but keep your text data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Post Detail Modal -->
+    <div id="postModal" class="modal-overlay hidden">
+        <div class="modal-container post-modal">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div id="postModalContent">
+                <!-- Post detail will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
